@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525875113897.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3F66EE3F",
+    "lastKnownWriteTime" : 7523097616837015397,
+    "last_content_update" : 1525875113897,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "8297136F",
+        "caption" : "flights",
+        "contentUrl" : "grid_resource/gridviewer.html?env=package%3Anycflights13&obj=flights&cache_key=8297136F",
+        "displayedObservations" : 336776,
+        "environment" : "package:nycflights13",
+        "object" : "flights",
+        "preview" : 0,
+        "totalObservations" : 336776,
+        "variables" : 19
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

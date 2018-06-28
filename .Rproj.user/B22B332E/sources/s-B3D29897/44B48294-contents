@@ -1,0 +1,58 @@
+library(ggplot2)
+library(reshape2)
+
+head(mtcars)
+
+ggplot(mtcars, aes(x=as.factor(cyl) )) + geom_bar()
+
+# Create data
+data=data.frame(name=c("A","B","C","D","E") ,  value=c(3,12,5,18,45))
+
+#creating a plot.
+
+ggplot(data, aes(x=name, y=value))+
+   geom_bar(stat = "identity", fill = "#FE6F87")
+
+# create a dataset
+specie=c(rep("sorgho" , 3) , rep("poacee" , 3) , rep("banana" , 3) , rep("triticum" , 3) )
+condition=rep(c("normal" , "stress" , "Nitrogen") , 4)
+value=abs(rnorm(12 , 0 , 15))
+data=data.frame(specie,condition,value)
+
+#plot grouped
+ggplot(data, aes(fill=condition, y=value, x=specie)) + 
+  geom_bar(position="dodge", stat="identity")
+
+#plot stacked
+# Stacked
+ggplot(data, aes(fill=condition, y=value, x=specie)) + 
+  geom_bar( stat="identity")
+
+#sample of my data.
+plot_data <- read.csv("~/R Practice/data long.csv")
+
+#reshape my data
+plot_reshaped <- melt(plot_data)
+colnames(plot_reshaped) <- c("Country","period","value")
+
+#plot my data
+#setting group of colours.
+group.colors <- c(January.to.February = "#FE6F87", March.to.April = "#7F7F7F")
+ggplot(data = plot_reshaped, aes(fill = period, y = (value *100), x = Country, label = value))+
+  geom_bar(position = "dodge", stat = "identity")+
+  geom_text(aes(label = (value * 100)),position=position_dodge(width=0.9), vjust=-0.25, colour = "#FE6F87", size = 8)+
+  #geom_text(aes(label = value),position=position_stack(), vjust=-0.25, colour = "white", size = 6)+
+  #scale_fill_discrete(name = "Period", breaks = c("January.to.February","March.to.April"),
+                      #labels = c("January - February","March - April"))+
+  scale_fill_manual(values=group.colors, name = "Period", breaks = c("January.to.February","March.to.April"),
+                    labels = c("January - February","March - April"))+
+  theme(axis.text.y = element_blank(),
+        axis.title.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.x = element_text(face = "bold", size = "14", colour = "#7F7F7F"),
+        axis.title.x = element_text(face = "bold", size = "14", colour = "#7F7F7F"),
+        legend.title = element_text(face = "bold", size = "14", colour = "#7F7F7F"),
+        legend.text = element_text(face = "bold", size = "8", colour = "#7F7F7F"))
+
+
+#line graph
